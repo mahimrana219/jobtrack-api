@@ -18,12 +18,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
       - run: npm install
-      - name: Check MongoDB is reachable
-        run: |
-          nc -zv 127.0.0.1 27017
-          node -e "require('mongoose').connect('mongodb://127.0.0.1:27017/ping',{serverSelectionTimeoutMS:10000}).then(()=>{console.log('MongoDB OK');process.exit(0)}).catch(e=>{console.error(e);process.exit(1)})"
       - run: npm test
         env:
           MONGO_URI_TEST: mongodb://127.0.0.1:27017/jobtrack_test
