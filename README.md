@@ -17,7 +17,7 @@ Users sign up, log in with JWT, and manage their own pipeline: add applications,
 - **Pipeline stats**: count per status, response rate, and how many follow-ups are due
 - **Request validation with Zod**: clear `400` errors listing each bad field
 - **Security basics**: Helmet headers, CORS, rate limiting on auth routes, body size limit, regex-escaped search
-- **Tests**: Jest + Supertest integration tests, run on every push with GitHub Actions and a real MongoDB service
+- **Tests**: Node's built-in test runner + Supertest integration tests, run on every push with GitHub Actions and a real MongoDB service
 
 ## Project structure
 
