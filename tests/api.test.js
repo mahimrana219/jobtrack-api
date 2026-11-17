@@ -15,12 +15,12 @@ beforeAll(async () => {
     mongo = await MongoMemoryServer.create();
     uri = mongo.getUri();
   }
-  await mongoose.connect(uri);
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 15000 });
   await mongoose.connection.dropDatabase();
 });
 
 afterAll(async () => {
-  await mongoose.connection.dropDatabase();
+  if (mongoose.connection.readyState === 1) await mongoose.connection.dropDatabase();
   await mongoose.disconnect();
   if (mongo) await mongo.stop();
 });
